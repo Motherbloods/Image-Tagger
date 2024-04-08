@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload Example</title>
+  </head>
+  <body>
+    <h1>File Upload Example</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="images" multiple />
+      <button type="submit">Upload</button>
+    </form>
+
+    <h2>Uploaded Files:</h2>
+    <ul>
+      <% files.forEach(file => { %>
+      <li>
+        <%= file %>
+        <!-- Menampilkan nama file -->
+        <a href="/download/<%= file %>">Download</a>
+        <!-- Tautan download -->
+        <img
+          src="/uploads/<%= file %>"
+          alt="<%= file %>"
+          style="max-width: 200px"
+        />
+        <!-- Menampilkan gambar -->
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
